@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkeswdad3fgjr"]
+
+[ext_resource type="PackedScene" uid="uid://dqex5qjxv63uo" path="res://regular_box.tscn" id="1_4afvh"]
+[ext_resource type="PackedScene" uid="uid://c1krnysbfxs5m" path="res://box_bouncy.tscn" id="2_ye4xe"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="3_lm2fb"]
+[ext_resource type="PackedScene" uid="uid://c0eu1e561aup8" path="res://big_box.tscn" id="4_pp4m4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nhi2"]
+size = Vector2(1160.5, 83)
+
+[node name="World" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("3_lm2fb")
+object_template = Array[PackedScene]([ExtResource("2_ye4xe"), ExtResource("1_4afvh"), ExtResource("4_pp4m4")])
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1161.0
+offset_bottom = 648.0
+color = Color(0.579488, 0.831439, 0.932594, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(581.75, 600.5)
+shape = SubResource("RectangleShape2D_5nhi2")
+
+[node name="ColorRect2" type="ColorRect" parent="StaticBody2D"]
+offset_left = 2.0
+offset_top = 559.0
+offset_right = 1161.0
+offset_bottom = 643.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Box Regular" parent="." instance=ExtResource("1_4afvh")]
+position = Vector2(669, 97)
+
+[node name="Box Bouncy" parent="." instance=ExtResource("2_ye4xe")]
+position = Vector2(707, -145)
+scale = Vector2(1, 1)
+
+[node name="Big Box" parent="." instance=ExtResource("4_pp4m4")]
+position = Vector2(574, -485)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0eu1e561aup8"]
+
+[ext_resource type="PackedScene" uid="uid://dqex5qjxv63uo" path="res://regular_box.tscn" id="1_m4kau"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0jnto"]
+rough = true
+
+[node name="Big Box" instance=ExtResource("1_m4kau")]
+position = Vector2(50, 54)
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_0jnto")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(118.771, 84.5614)
+scale = Vector2(4.63928, 3.74616)
+
+[node name="ColorRect3" parent="CollisionShape2D" index="0"]
+color = Color(0.85056, 0, 0.183548, 1)
